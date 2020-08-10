@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework'
+version '5.3.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war' // 打war包需要
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(project(":spring-webmvc")) // 可选。看项目运行具体需要哪个就添加哪个
+    compile(project(":spring-context"))
+    compile(project(":spring-instrument"))
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

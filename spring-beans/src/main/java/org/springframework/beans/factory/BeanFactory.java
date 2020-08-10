@@ -121,7 +121,6 @@ public interface BeanFactory {
 	 * beans <i>created</i> by the FactoryBean. For example, if the bean named
 	 * {@code myJndiObject} is a FactoryBean, getting {@code &myJndiObject}
 	 * will return the factory, not the instance returned by the factory.
-	 * 前缀
 	 */
 	String FACTORY_BEAN_PREFIX = "&";
 
@@ -137,7 +136,6 @@ public interface BeanFactory {
 	 * @return an instance of the bean
 	 * @throws NoSuchBeanDefinitionException if there is no bean with the specified name
 	 * @throws BeansException if the bean could not be obtained
-	 * 多个 getBean 方法
 	 */
 	Object getBean(String name) throws BeansException;
 
@@ -250,7 +248,6 @@ public interface BeanFactory {
 	 * will be able to obtain an instance for the same name.
 	 * @param name the name of the bean to query
 	 * @return whether a bean with the given name is present
-	 * 是否包含Bean
 	 */
 	boolean containsBean(String name);
 
@@ -268,7 +265,6 @@ public interface BeanFactory {
 	 * @throws NoSuchBeanDefinitionException if there is no bean with the given name
 	 * @see #getBean
 	 * @see #isPrototype
-	 * Bean 是否单例
 	 */
 	boolean isSingleton(String name) throws NoSuchBeanDefinitionException;
 
@@ -287,7 +283,6 @@ public interface BeanFactory {
 	 * @since 2.0.3
 	 * @see #getBean
 	 * @see #isSingleton
-	 * Bean是否原型
 	 */
 	boolean isPrototype(String name) throws NoSuchBeanDefinitionException;
 
@@ -305,7 +300,6 @@ public interface BeanFactory {
 	 * @since 4.2
 	 * @see #getBean
 	 * @see #getType
-	 * 是否类型匹配
 	 */
 	boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException;
 
@@ -340,7 +334,6 @@ public interface BeanFactory {
 	 * @since 1.1.2
 	 * @see #getBean
 	 * @see #isTypeMatch
-	 * 获取Bean的类型
 	 */
 	@Nullable
 	Class<?> getType(String name) throws NoSuchBeanDefinitionException;
@@ -362,7 +355,6 @@ public interface BeanFactory {
 	 * @since 5.2
 	 * @see #getBean
 	 * @see #isTypeMatch
-	 *
 	 */
 	@Nullable
 	Class<?> getType(String name, boolean allowFactoryBeanInit) throws NoSuchBeanDefinitionException;
@@ -377,7 +369,6 @@ public interface BeanFactory {
 	 * @param name the bean name to check for aliases
 	 * @return the aliases, or an empty array if none
 	 * @see #getBean
-	 * 获取Bean的别名
 	 */
 	String[] getAliases(String name);
 

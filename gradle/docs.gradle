@@ -61,53 +61,53 @@ task api(type: Javadoc) {
 /**
  * Produce KDoc for all Spring Framework modules in "build/docs/kdoc"
  */
-dokka {
-	dependsOn {
-		tasks.getByName("api")
-	}
-
-	doFirst {
-		configuration {
-			classpath = moduleProjects.collect { project -> project.jar.outputs.files.getFiles() }.flatten()
-			classpath += files(moduleProjects.collect { it.sourceSets.main.compileClasspath })
-
-			moduleProjects.findAll {
-				it.pluginManager.hasPlugin("kotlin")
-			}.each { project ->
-				def kotlinDirs = project.sourceSets.main.kotlin.srcDirs.collect()
-				kotlinDirs -= project.sourceSets.main.java.srcDirs
-				kotlinDirs.each { dir ->
-					if (dir.exists()) {
-						sourceRoot {
-							path = dir.path
-						}
-					}
-				}
-			}
-		}
-	}
-
-	outputFormat = "html"
-	outputDirectory = "$buildDir/docs/kdoc"
-
-	configuration {
-		moduleName = "spring-framework"
-
-		externalDocumentationLink {
-			url = new URL("https://docs.spring.io/spring-framework/docs/$version/javadoc-api/")
-			packageListUrl = new File(buildDir, "docs/javadoc/package-list").toURI().toURL()
-		}
-		externalDocumentationLink {
-			url = new URL("https://projectreactor.io/docs/core/release/api/")
-		}
-		externalDocumentationLink {
-			url = new URL("https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/")
-		}
-		externalDocumentationLink {
-			url = new URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/")
-		}
-	}
-}
+//dokka {
+//	dependsOn {
+//		tasks.getByName("api")
+//	}
+//
+//	doFirst {
+//		configuration {
+//			classpath = moduleProjects.collect { project -> project.jar.outputs.files.getFiles() }.flatten()
+//			classpath += files(moduleProjects.collect { it.sourceSets.main.compileClasspath })
+//
+//			moduleProjects.findAll {
+//				it.pluginManager.hasPlugin("kotlin")
+//			}.each { project ->
+//				def kotlinDirs = project.sourceSets.main.kotlin.srcDirs.collect()
+//				kotlinDirs -= project.sourceSets.main.java.srcDirs
+//				kotlinDirs.each { dir ->
+//					if (dir.exists()) {
+//						sourceRoot {
+//							path = dir.path
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//	outputFormat = "html"
+//	outputDirectory = "$buildDir/docs/kdoc"
+//
+//	configuration {
+//		moduleName = "spring-framework"
+//
+//		externalDocumentationLink {
+//			url = new URL("https://docs.spring.io/spring-framework/docs/$version/javadoc-api/")
+//			packageListUrl = new File(buildDir, "docs/javadoc/package-list").toURI().toURL()
+//		}
+//		externalDocumentationLink {
+//			url = new URL("https://projectreactor.io/docs/core/release/api/")
+//		}
+//		externalDocumentationLink {
+//			url = new URL("https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/")
+//		}
+//		externalDocumentationLink {
+//			url = new URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/")
+//		}
+//	}
+//}
 
 task downloadResources(type: Download) {
 	def version = "0.2.2.RELEASE"
@@ -123,14 +123,14 @@ task extractDocResources(type: Copy, dependsOn: downloadResources) {
 	into "$buildDir/docs/spring-docs-resources/"
 }
 
-asciidoctorj {
-	modules {
-		pdf {
-			version '1.5.0-beta.8'
-		}
-	}
-	fatalWarnings ".*"
-}
+//asciidoctorj {
+//	modules {
+//		pdf {
+//			version '1.5.0-beta.8'
+//		}
+//	}
+//	fatalWarnings ".*"
+//}
 
 /**
  * Produce the Spring Framework Reference documentation
